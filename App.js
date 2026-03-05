@@ -9,13 +9,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
 });
 
 function initializeApp(){
-//getting the camera button elements for html file
-const StartCAM= document.getElementById('startCamera');
-const StopCAM= document.getElementById('stopCamera');
+    //getting the camera button elements for html file
+    const StartCAM= document.getElementById('startCamera');
+    const StopCAM= document.getElementById('stopCamera');
 
-//adding event listeners so that it looks out for the click
-StartCAM.addEventListener('click', startCamera);
-StopCAM.addEventListener('click', stopCamera);
+    //adding event listeners so that it looks out from the click
+    StartCAM.addEventListener('click', startCamera);
+    StopCAM.addEventListener('click', stopCamera);
 };
 
 let cameraStream= null;
@@ -88,26 +88,26 @@ function updateStatus(message) {
 // Canvas lets you draw graphics on top of video
 
 function drawHUD(){
- const canvas = document.getElementById('overLayCanvas');
- const video = document.getElementById('videoElement');
+    const canvas = document.getElementById('overLayCanvas');
+    const video = document.getElementById('videoElement');
 
- if (!video || !video.videoWidth) return;
+    if (!video || !video.videoWidth) return;
 
 
-//Match the canvas size to the video
-canvas.width = video.videoWidth;
-canvas.height = video.videoHeight;
+    //Match the canvas size to the video
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
 
-const Ctx = canvas.getContext('2d')
+    const Ctx = canvas.getContext('2d')
 
-//draw center guidlines 
-Ctx.strokeStyle = '#4CAF50';
-Ctx.lineWidth = 3;
-Ctx.setLineDash([20 , 10]);
-Ctx.beginPath();
-Ctx.moveTo(canvas.width / 2, 0);
-Ctx.lineTo(canvas.width / 2, canvas.height);
-Ctx.stroke();
+    //draw center guidlines 
+    Ctx.strokeStyle = '#4CAF50';
+    Ctx.lineWidth = 3;
+    Ctx.setLineDash([20 , 10]);
+    Ctx.beginPath();
+    Ctx.moveTo(canvas.width / 2, 0);
+    Ctx.lineTo(canvas.width / 2, canvas.height);
+    Ctx.stroke();
 }
 
 //loading Ai model
@@ -139,7 +139,7 @@ async function detectObjects(video) {
     try{
         //run detection on video frame 
         const Predictions = await Model.detect(video);
- // predictions = [
+        // predictions = [
         //   { class: 'car', score: 0.95, bbox: [x, y, width, height] },
         //   { class: 'person', score: 0.87, bbox: [x, y, width, height] }
         // ]
